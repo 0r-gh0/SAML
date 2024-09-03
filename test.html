@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <button type="button" onclick="login()">Log in</button>
+  <script src="https://cdn.auth0.com/js/auth0/9.19.0/auth0.min.js"></script>
+  <script>
+    var auth0 = new auth0.WebAuth({
+      domain: dev-hasknvosor5unmsd.us.auth0.com,
+      clientID: iF7QdO1I5oqhmR1bvbna3z2P60neWzql,
+      redirectUri: URL_TO_THIS_PAGE,
+      responseType: 'token id_token',
+      scope: 'openid email profile'
+    })
+
+    auth0.parseHash(function(err, data) {
+      if (err) {
+        console.log(err)
+      }
+
+      if (data) {
+        console.log('Login successful!')
+        console.log(data)
+      }
+    })
+
+    window.login = function() {
+      auth0.authorize()
+    }
+  </script>
+
+</body>
+</html>
